@@ -1,0 +1,27 @@
+import math
+
+def main():
+    # Get an odometer value in U.S. miles from the user.
+    start_odometer = float(input("Enter the start odometer "))
+    end_odometer = float(input("Enter the end odometer "))
+    amount_fuel = float(input("Enter the fuel amount "))
+    mpg = miles_per_gallon(start_odometer,end_odometer,amount_fuel)
+    lp100k = lp100k_from_mpg(mpg)
+    print(f"The start odometer: {start_odometer}")
+    print(f"The end odometer: {end_odometer}")
+    print(f"The fuel amount: {amount_fuel}")
+    print(f"The mile per gallon: {mpg:.2f}")
+    print(f"Mile per galloon to litter per 100 kilometer: {lp100k:.2f}")
+    pass
+
+
+def miles_per_gallon(start_odometer,end_odometer,amount_fuel):
+    mpg = (end_odometer - start_odometer)/amount_fuel
+    return mpg
+
+
+def lp100k_from_mpg(mpg):
+    lp100k = 235.215/mpg
+    return lp100k
+
+main()
