@@ -1,7 +1,8 @@
 
 
 
-
+from numpy import identity
+from formula import parse_formula
 
 
 def make_periodic_table():
@@ -102,7 +103,7 @@ def make_periodic_table():
         "Te": ["Tellurium", 127.6],
         "Th": ["Thorium", 232.03806],
         "Ti": ["Titanium", 47.867],
-        "Tl": ["Thallium", 204.38],
+        "Tl": ["Thallium", 204.3833],
         "Tm": ["Thulium", 168.93421],
         "U": ["Uranium", 238.02891],
         "V": ["Vanadium", 50.9415],
@@ -113,9 +114,11 @@ def make_periodic_table():
         "Zn": ["Zinc", 65.38],
         "Zr": ["Zirconium", 91.224]
     }
+    
     return periodic_table_dict
 
-def compute_molar_mass(formula, periodic_table_dict):
+
+def compute_molar_mass(symbol_quantity_list, periodic_table_dict):
 
     """"
     Compute and return the molar mass of a chemical formula
@@ -123,3 +126,56 @@ def compute_molar_mass(formula, periodic_table_dict):
     For example, "H2O" returns 18.015 and
     "PO4H2(CH2)12CH3" returns 142.184 
     """
+    Symbol_INDEX = 0
+    QUANTITY_INDEX = 1
+    ATOMIC_MASS_INDEX = 1
+
+    total_mass = 0.0
+
+    for element in symbol_quantity_list:
+        symbol = element[Symbol_INDEX]
+        quantity = element[QUANTITY_INDEX]
+        atomic_mass = periodic_table_dict[symbol][ATOMIC_MASS_INDEX]
+        total_mass += atomic_mass * quantity
+    return total_mass
+
+
+    
+
+
+
+
+def main():
+   formula = input("Enter the chemical formula of the compound: ")
+   sample_size = float(input("Enter the sample size in grams: "))
+   periodic_table = make_periodic_table()
+   symbol_quantity_list = parse_formula(formula, periodic_table)
+   molar_mass = compute_molar_mass(symbol_quantity_list, periodic_table)
+   number_of_moles = sample_size / molar_mass
+   print(f"The molar mass of {formula} is {molar_mass} grams/mole")
+   print(f"The number of moles in {sample_size} grams of "
+         f"{formula} is {number_of_moles:.5f} moles")
+   
+   #identity of known compound#
+   known_compound = {
+       "H2O": "Water",
+       "CO2": "Carbon Dioxide",
+       "O2": "Oxygen",
+       "N2": "Nitrogen",
+       "CH4": "Methane",
+       "C2H6": "Ethane",
+       "C3H8": "Propane",
+       "C4H10": "Butane",
+       "C6H12O6": "Glucose",
+       "NaCl": "Sodium Chloride",
+       "C12H22O11": "Sucrose",
+   }
+   
+
+   if formula in known_compound:
+       print(f"The compound {formula} is known as {known_compound[formula]}.")
+
+
+if __name__ == "__main__":
+    main()
+   
