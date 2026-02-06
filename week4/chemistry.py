@@ -1,22 +1,10 @@
 
 
-
-from numpy import identity
 from formula import parse_formula
 
 
 def make_periodic_table():
-    """Create and return the periodic table dictionary.
-    Each key in the dictionary is a chemical symbol
-    (a string) for an element.  Each value in the
-    dictionary is a list that contains the name
-    of the element (a string) at index 0 and the
-    atomic mass of the element (a float) at index 1.
-    For example, the "He" key for Helium will have
-    the value ["Helium", 4.002602]
-    Parameters: none
-    Return: periodic table dictionary
-    """
+    """Create and return the periodic table dictionary."""
     periodic_table_dict = {
         "Ac": ["Actinium", 227],
         "Ag": ["Silver", 107.8682],
@@ -60,17 +48,16 @@ def make_periodic_table():
         "Kr": ["Krypton", 83.798],
         "La": ["Lanthanum", 138.90547],
         "Li": ["Lithium", 6.941],
-        "Lr": ["Lawrencium", 262],
         "Lu": ["Lutetium", 174.9668],
         "Mg": ["Magnesium", 24.305],
         "Mn": ["Manganese", 54.938045],
         "Mo": ["Molybdenum", 95.96],
         "N": ["Nitrogen", 14.0067],
         "Na": ["Sodium", 22.98976928],
-        "Nb": ["Niobium", 92.90638],
-        "Nd": ["Neodymium", 144.242],
         "Ne": ["Neon", 20.1797],
         "Ni": ["Nickel", 58.6934],
+        "Nb": ["Niobium", 92.90638],
+        "Nd": ["Neodymium", 144.242],
         "Np": ["Neptunium", 237],
         "O": ["Oxygen", 15.9994],
         "Os": ["Osmium", 190.23],
@@ -114,68 +101,57 @@ def make_periodic_table():
         "Zn": ["Zinc", 65.38],
         "Zr": ["Zirconium", 91.224]
     }
-    
     return periodic_table_dict
 
 
 def compute_molar_mass(symbol_quantity_list, periodic_table_dict):
-
-    """"
-    Compute and return the molar mass of a chemical formula
-    represented as a string.
-    For example, "H2O" returns 18.015 and
-    "PO4H2(CH2)12CH3" returns 142.184 
-    """
-    Symbol_INDEX = 0
+    """Compute and return the molar mass."""
+    SYMBOL_INDEX = 0
     QUANTITY_INDEX = 1
     ATOMIC_MASS_INDEX = 1
 
     total_mass = 0.0
 
     for element in symbol_quantity_list:
-        symbol = element[Symbol_INDEX]
+        symbol = element[SYMBOL_INDEX]
         quantity = element[QUANTITY_INDEX]
         atomic_mass = periodic_table_dict[symbol][ATOMIC_MASS_INDEX]
         total_mass += atomic_mass * quantity
+
     return total_mass
 
 
-    
-
-
-
-
 def main():
-   formula = input("Enter the chemical formula of the compound: ")
-   sample_size = float(input("Enter the sample size in grams: "))
-   periodic_table = make_periodic_table()
-   symbol_quantity_list = parse_formula(formula, periodic_table)
-   molar_mass = compute_molar_mass(symbol_quantity_list, periodic_table)
-   number_of_moles = sample_size / molar_mass
-   print(f"The molar mass of {formula} is {molar_mass} grams/mole")
-   print(f"The number of moles in {sample_size} grams of "
-         f"{formula} is {number_of_moles:.5f} moles")
-   
-   #identity of known compound#
-   known_compound = {
-       "H2O": "Water",
-       "CO2": "Carbon Dioxide",
-       "O2": "Oxygen",
-       "N2": "Nitrogen",
-       "CH4": "Methane",
-       "C2H6": "Ethane",
-       "C3H8": "Propane",
-       "C4H10": "Butane",
-       "C6H12O6": "Glucose",
-       "NaCl": "Sodium Chloride",
-       "C12H22O11": "Sucrose",
-   }
-   
+    formula = input("Enter the molecular formula of the sample: ")
+    sample_mass = float(input("Enter the mass in grams of the sample: "))
 
-   if formula in known_compound:
-       print(f"The compound {formula} is known as {known_compound[formula]}.")
+    periodic_table = make_periodic_table()
+    symbol_quantity_list = parse_formula(formula, periodic_table)
+
+    molar_mass = compute_molar_mass(symbol_quantity_list, periodic_table)
+    moles = sample_mass / molar_mass
+
+    print(f"{molar_mass:.5f} grams/mole")
+    print(f"{moles:.5f} moles")
+
+    # Enhancement: identify known compounds
+    known_compounds = {
+        "H2O": "Water",
+        "CO2": "Carbon Dioxide",
+        "O2": "Oxygen",
+        "N2": "Nitrogen",
+        "CH4": "Methane",
+        "C2H6": "Ethane",
+        "C3H8": "Propane",
+        "C4H10": "Butane",
+        "C6H12O6": "Glucose",
+        "NaCl": "Sodium Chloride",
+        "C12H22O11": "Sucrose"
+    }
+
+    if formula in known_compounds:
+        print(f"Known compound: {known_compounds[formula]}")
 
 
 if __name__ == "__main__":
     main()
-   
