@@ -1,0 +1,50 @@
+CSE 111 Proposal for a Student Chosen Program
+
+    (This is a proposal. All proposals are written with our best
+    knowledge at the beginning of a project. As we progress from the
+    beginning to the end of a project, we gain more knowledge, and we
+    change some of our proposed ideas. This is part of completing any
+    project and is fine.  However, we still must write a proposal so
+    that our teachers or supervisors know what we intend to do. Please
+    answer each of the following questions to the best of your
+    knowledge.)
+
+1. What is the title of your program?
+Nigeria Rent Transparency & Affordability Checker
+
+2. What real-world problem will your program address or help to solve?
+In Nigeria, many tenants struggle with renting issues such as unclear rent
+breakdowns, sudden rent increases, hidden fees, and difficulty knowing whether a
+rent is affordable based on their income. There is also a lack of simple tools that help
+tenants understand total yearly rent costs, agent fees, caution fees, and how long it
+will take to save for rent.
+    This program will help tenants by:
+    Calculating the true cost of renting (rent + agent fee + agreement fee + caution fee)
+    Checking whether a rent is affordable based on monthly income
+    Comparing different rental options
+    Helping users plan how long it will take to save for rent
+This tool can assist students, young workers, and families in Nigeria when making renting decisions.
+
+
+3. What will you learn from developing this program?
+
+4. What Python modules will your program use?
+
+    (Some examples are: csv, datetime, functools, matplotlib, math,
+    pandas, pytest, random, requests, and tkinter.)
+
+5. List the names of functions you will need?
+
+    (Remember that the most reusable functions don't get user input and
+    don't print results but instead have parameters and return a result.
+    Functions that get user input and print results are important and do
+    useful work but are not easily reusable.)
+
+    (Remember also that it's hard to test functions that get user input
+    and print results. It's easy to test functions that don't get user
+    input and don't print results but instead have parameters and return
+    a result. Therefore, you should write most of your program functions
+    to have parameters and return a result.)
+
+6. List the names of the test functions you will write.
+
