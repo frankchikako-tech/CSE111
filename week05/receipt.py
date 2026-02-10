@@ -49,7 +49,7 @@ def main():
         print(f"Total: {total:.2f}")
 
         # Thank you message
-        print("Thank you for shopping at the Inkom Emporium.")
+        print("Thank you for shopping at the Frank's Store.")
 
         # Print current date and time
         current_time = datetime.now()
