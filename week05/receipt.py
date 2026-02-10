@@ -1,3 +1,10 @@
+"""
+Enhancement:
+- The program prints how many days remain until the New Year's Sale (Jan 1).
+"""
+
+
+
 import csv
 from datetime import datetime
 
@@ -30,6 +37,7 @@ def main():
                 product = product_dict[product_id]
                 name = product[NAME_INDEX]
                 price = float(product[PRICE_INDEX])
+                print("         Frank's Store")
                 print(f"Product name: {name}, Price: ${price}")
                 item_total = price * quantity
                 subtotal += item_total
