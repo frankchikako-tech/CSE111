@@ -13,6 +13,7 @@ CSE 111 Proposal for a Student Chosen Program
 Nigeria Rent Transparency & Affordability Checker
 
 2. What real-world problem will your program address or help to solve?
+
 In Nigeria, many tenants struggle with renting issues such as unclear rent
 breakdowns, sudden rent increases, hidden fees, and difficulty knowing whether a
 rent is affordable based on their income. There is also a lack of simple tools that help
@@ -27,8 +28,23 @@ This tool can assist students, young workers, and families in Nigeria when makin
 
 
 3. What will you learn from developing this program?
+By developing this program, I will learn how to:
+    
+    How to design and organize a Python program using multiple single-purpose functions
+    Break a real-world problem into small, testable functions
+    Perform financial calculations using Python
+    Read and write data from CSV files
+    Use dictionaries and lists to organize rental data
+    Handle user input and errors safely
+    Write automated tests using pytest
+    Design a program that could realistically be expanded into a real application
 
 4. What Python modules will your program use?
+The program will use the following Python modules:
+ csv
+datetime
+pytest
+math
 
     (Some examples are: csv, datetime, functools, matplotlib, math,
     pandas, pytest, random, requests, and tkinter.)
@@ -45,6 +61,49 @@ This tool can assist students, young workers, and families in Nigeria when makin
     input and don't print results but instead have parameters and return
     a result. Therefore, you should write most of your program functions
     to have parameters and return a result.)
+The program will include the following functions:
+
+read_rent_listings(filename)
+
+calculate_total_rent_cost(annual_rent, agent_fee_rate, agreement_fee_rate, caution_fee)
+
+calculate_monthly_savings_needed(total_cost, months)
+
+is_rent_affordable(monthly_income, annual_rent)
+
+compare_rent_options(rent_list)
+
+get_current_datetime()
+
+print_rent_report(rent_data, affordability, savings_plan, date_time)
+
+main()
+
 
 6. List the names of the test functions you will write.
 
+The following test functions will be written using pytest:
+
+test_calculate_total_rent_cost()
+
+test_calculate_monthly_savings_needed()
+
+test_is_rent_affordable()
+
+
+
+Example of what the program could do (user experience)
+
+Welcome to the Nigeria Rent Transparency Tool
+
+Monthly Income: ₦150,000
+Annual Rent: ₦600,000
+Agent Fee: 10%
+Agreement Fee: 10%
+Caution Fee: ₦100,000
+
+Total Move-in Cost: ₦820,000
+Affordable: NO
+Months needed to save: 6
+
+Report generated on: Mon Feb 10 14:32:11 2026
