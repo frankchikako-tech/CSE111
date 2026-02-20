@@ -6,6 +6,7 @@ import random
 def main():
     root = tk.Tk()
     frm_main = Frame(root)
+    root.option_add("*Font", "Arial 18")
     frm_main.master.title("Dice")
     frm_main.pack(padx=3, pady=3,fill=tk.BOTH, expand=True)
     setup_main(frm_main)
@@ -15,11 +16,11 @@ def setup_main(frm_main):
     lbl_sides= Label(frm_main, text="Enter the Number of sides on the dice (2-20)")
     lbl_sides.grid(row=0, column=0, padx=3, pady=3)
     ent_sides = IntEntry(frm_main, width=5, lower_bound=2, upper_bound=20)
-    ent_sides.grid(row=0, column=1)
+    ent_sides.grid(row=0, column=1, padx=3, pady=3)
     lbl_counts = Label(frm_main, text="Enter the Number of dice to roll(1-10)")
-    lbl_counts.grid(row=1, column=0)
+    lbl_counts.grid(row=1, column=0, padx=3, pady=3)
     ent_counts = IntEntry(frm_main, width=2, lower_bound=1, upper_bound=10)
-    ent_counts.grid(row=1, column=1)
+    ent_counts.grid(row=1, column=1, padx=3, pady=3)
     btn_roll = Button(frm_main, text="Roll it")
     btn_roll.grid(row=2, column=0)
     lbl_rolls = Label(frm_main, text="")
@@ -36,8 +37,16 @@ def setup_main(frm_main):
     
 
     def roll_action():
-        sides = ent_sides.get()
-        counts = ent_counts.get()
+        try:
+             sides = ent_sides.get()
+        except ValueError:
+            lbl_rolls.config(text="Invalid input for sides. Please enter a number between 2 and 20.")
+            return
+        try:
+            counts = ent_counts.get()
+        except ValueError:
+            lbl_rolls.config(text="Invalid input for counts. Please enter a number between 1 and 10.")
+            return
         lbltext = roll_dice(sides, counts)
         lbl_rolls.config(text=lbltext)
       
